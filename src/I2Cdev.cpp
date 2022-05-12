@@ -426,7 +426,7 @@ int8_t I2Cdev::readWords(uint8_t devAddr, uint8_t regAddr, uint8_t length, uint1
                 Wire.write(regAddr);
                 Wire.endTransmission();                
                 Wire.requestFrom(devAddr, (uint8_t)(length * 2)); // length=words, this wants bytes
-        
+         
                 bool msb = true; // starts with MSB, then LSB
                 for (; Wire.available() && count < length && (timeout == 0 || millis() - t1 < timeout);) {
                     if (msb) {
